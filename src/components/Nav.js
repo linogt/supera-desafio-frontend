@@ -1,4 +1,5 @@
 function Nav() {
+  // HTML da Nav
   return (
     <nav className="sb-topnav navbar navbar-expand" style={{ backgroundColor: '#0a66c2' }}>
       <div className="d-flex justify-content-center">
@@ -13,4 +14,4 @@ function Nav() {
   );
 }
 
-export default Nav; 
+export default Nav;

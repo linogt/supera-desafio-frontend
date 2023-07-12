@@ -5,11 +5,13 @@ import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 
 function Formulario({ onFormSubmit }) {
+
+  // Constantes
   const [dataInicial, setDataInicial] = useState(null);
   const [dataFinal, setDataFinal] = useState(null);
   const [nomeOperador, setNomeOperador] = useState('');
 
-
+  // Requisição a partir dos Filtros
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
@@ -32,14 +34,15 @@ function Formulario({ onFormSubmit }) {
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        onFormSubmit(data); // Atualiza os dados da tabela no componente pai
+        onFormSubmit(data);
       })
       .catch(error => console.error("Erro ao obter os dados das transferências", error));
   };
 
+  // HTML do Formulário
   return (
     <Form onSubmit={handleFormSubmit} style={{ width: '100%' }}>
-      
+
       <div className="card" style={{ margin: "10px", padding: '10px', paddingTop: "30px", paddingBottom: "20px" }}>
         <div className="d-flex justify-content-between">
           <div className="d-flex justify-content-between" style={{ width: '60%' }}>
