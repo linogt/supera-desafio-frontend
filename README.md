@@ -12,4 +12,12 @@ Desafio Técnico proposto pela empresa Supera. O projeto consiste na criação d
 
 https://github.com/linogt/supera-desafio-frontend/assets/75547468/31f5415a-7096-40d3-8a22-4390b953e1ef
 
+## Explicando Código 
+
+https://github.com/linogt/supera-desafio-frontend/assets/75547468/286134e0-8c51-475a-af00-6687f506c90c
+
+## Autor
+
+Gabriel Lino Topa Garcia
+
 
