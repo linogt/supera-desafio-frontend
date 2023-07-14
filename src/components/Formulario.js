@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import moment from 'moment';
+import { handleFormSubmit } from '../adapters/transferRequest';
+
 
 function Formulario({ onFormSubmit }) {
 
@@ -11,37 +12,9 @@ function Formulario({ onFormSubmit }) {
   const [dataFinal, setDataFinal] = useState(null);
   const [nomeOperador, setNomeOperador] = useState('');
 
-  // Requisição a partir dos Filtros
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-
-    let url = 'http://localhost:8080/api/transferencia?';
-
-    if (nomeOperador) {
-      url += `nomeOperador=${nomeOperador}&`;
-    }
-
-    if (dataInicial) {
-      const formattedDataInicial = moment(dataInicial).format('YYYY-MM-DD');
-      url += `dataInicial=${formattedDataInicial}&`;
-    }
-
-    if (dataFinal) {
-      const formattedDataFinal = moment(dataFinal).format('YYYY-MM-DD');
-      url += `dataFinal=${formattedDataFinal}&`;
-    }
-
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        onFormSubmit(data);
-      })
-      .catch(error => console.error("Erro ao obter os dados das transferências", error));
-  };
-
   // HTML do Formulário
   return (
-    <Form onSubmit={handleFormSubmit} style={{ width: '100%' }}>
+    <Form onSubmit={event => handleFormSubmit(event, nomeOperador, dataInicial, dataFinal, onFormSubmit)} style={{ width: '100%' }}>
 
       <div className="card" style={{ margin: "10px", padding: '10px', paddingTop: "30px", paddingBottom: "20px" }}>
         <div className="d-flex justify-content-between">

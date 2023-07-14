@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 // Formatar a Data
 import moment from 'moment';
 import ReactPaginate from 'react-paginate';
-import './Tabela.css';
+import '../assets/css/Tabela.css';
+import formatCurrency from '../utils/formatCurrency';
+import formatType from '../utils/formatType'
+import calculateBalance from '../utils/calculateBalance';
 
 function Tabela({ vetor, saldoTotal }) {
 
@@ -23,53 +26,13 @@ function Tabela({ vetor, saldoTotal }) {
     setCurrentPage(pageCount - 1);
   };
 
-  // Calcular Saldo no Período
-  const calcularSaldoNoPeriodo = () => {
-    let saldo = 0;
-    vetor.forEach(obj => {
-      saldo += obj.valor;
-    });
-    return saldo;
-  };
-  const saldoNoPeriodo = calcularSaldoNoPeriodo();
 
-  // Formatar Valor
-  const formatCurrency = value => {
-    const formattedValue = parseFloat(value).toLocaleString('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-    });
-
-    if (value < 0) {
-      return `R$ -${formattedValue.replace('-R$', '').trim()}`;
-    } else {
-      return formattedValue;
-    }
-  };
-
-  // Formatar Tipo
-  const formatTipo = (tipo, valor) => {
-    if (tipo === 'DEPOSITO') {
-      return 'Depósito';
-    } else if (tipo === 'SAQUE') {
-      return 'Saque';
-    } else if (tipo === 'TRANSFERENCIA') {
-      if (valor > 0) {
-        return 'Transferência Entrada';
-      } else {
-        return 'Transferência Saída';
-      }
-    } else {
-      return tipo;
-    }
-  };
-
-  // HTML da Tabela e Saldos
+  // HTML Tabela
   return (
     <div>
       <div className="d-flex justify-content-between" style={{ margin: "10px", marginTop: "30px" }}>
         <span className="card" style={{ padding: "10px", backgroundColor: '#98FB98' }}>Saldo Total: {formatCurrency(saldoTotal)}</span>
-        <span className="card" style={{ padding: "10px", backgroundColor: '#98FB98' }}>Saldo no Período: {formatCurrency(saldoNoPeriodo)}</span>
+        <span className="card" style={{ padding: "10px", backgroundColor: '#98FB98' }}>Saldo no Período: {formatCurrency(calculateBalance(vetor))}</span>
       </div>
 
       <table className="table table-striped table-bordered" style={{ marginTop: "30px", marginBottom: "30px" }}>
@@ -86,7 +49,7 @@ function Tabela({ vetor, saldoTotal }) {
             <tr key={indice}>
               <td>{moment(obj.dataTransferencia).format('DD/MM/YYYY')}</td>
               <td>{formatCurrency(obj.valor)}</td>
-              <td>{formatTipo(obj.tipo, obj.valor)}</td>
+              <td>{formatType(obj.tipo, obj.valor)}</td>
               <td>{obj.nomeOperadorTransacao}</td>
             </tr>
           ))}
