@@ -6,7 +6,7 @@ Desafio Técnico proposto pela empresa Supera. O projeto consiste na criação d
 
 ## Visualização HTML
 
-![image](https://github.com/linogt/supera-desafio-frontend/assets/75547468/db010417-e1a8-480f-98be-d77db569e36a)
+![Captura de tela 2023-07-12 110758](https://github.com/linogt/supera-desafio-frontend/assets/75547468/8d8ceab2-5a10-4c6b-8e0a-04981895a73d)
 
 ## Testes nos Filtros
 
