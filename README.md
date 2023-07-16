@@ -14,7 +14,7 @@ https://github.com/linogt/supera-desafio-frontend/assets/75547468/31f5415a-7096-
 
 ## Explicando Código 
 
-https://github.com/linogt/supera-desafio-frontend/assets/75547468/286134e0-8c51-475a-af00-6687f506c90c
+https://github.com/linogt/supera-desafio-frontend/assets/75547468/f9fad353-cbef-44fe-87ea-f1d8886bfe07
 
 ## Autor
 
