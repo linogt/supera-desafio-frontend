@@ -13,12 +13,12 @@ export const handleFormSubmit = (event, nomeOperador, dataInicial, dataFinal, on
     }
 
     if (dataInicial) {
-        const formattedDataInicial = moment(dataInicial).format('YYYY-MM-DD');
+        const formattedDataInicial = moment(dataInicial).format('YYYY-MM-DD') + 'T00:00:00';
         url += `dataInicial=${formattedDataInicial}&`;
     }
 
     if (dataFinal) {
-        const formattedDataFinal = moment(dataFinal).format('YYYY-MM-DD');
+        const formattedDataFinal = moment(dataFinal).format('YYYY-MM-DD') + 'T23:59:59';
         url += `dataFinal=${formattedDataFinal}&`;
     }
 

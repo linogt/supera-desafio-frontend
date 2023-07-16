@@ -30,12 +30,12 @@ function Tabela({ vetor, saldoTotal }) {
   // HTML Tabela
   return (
     <div>
-      <div className="d-flex justify-content-between" style={{ margin: "10px", marginTop: "30px" }}>
-        <span className="card" style={{ padding: "10px", backgroundColor: '#98FB98' }}>Saldo Total: {formatCurrency(saldoTotal)}</span>
-        <span className="card" style={{ padding: "10px", backgroundColor: '#98FB98' }}>Saldo no Período: {formatCurrency(calculateBalance(vetor))}</span>
+      <div className="d-flex justify-content-between saldo">
+        <span className="card" style={{backgroundColor: '#98FB98' }}>Saldo Total: {formatCurrency(saldoTotal)}</span>
+        <span className="card" style={{backgroundColor: '#98FB98' }}>Saldo no Período: {formatCurrency(calculateBalance(vetor))}</span>
       </div>
 
-      <table className="table table-striped table-bordered" style={{ marginTop: "30px", marginBottom: "30px" }}>
+      <table className="table table-striped table-bordered">
         <thead>
           <tr>
             <th>Dados</th>
@@ -57,7 +57,7 @@ function Tabela({ vetor, saldoTotal }) {
       </table>
 
       <div className="pagination justify-content-center align-items-center">
-        <span style={{ cursor: "pointer", paddingRight: "5px", paddingBottom: "15px" }} onClick={goToFirstPage}>{'<<'}</span>
+        <span className="setas" onClick={goToFirstPage}>{'<<'}</span>
         <ReactPaginate
           previousLabel={'<'}
           nextLabel={'>'}
@@ -70,7 +70,7 @@ function Tabela({ vetor, saldoTotal }) {
           subContainerClassName={"pages pagination"}
           activeClassName={"active"}
         />
-        <span style={{ cursor: "pointer", paddingLeft: "5px", paddingBottom: "15px" }} onClick={goToLastPage}>{'>>'}</span>
+        <span className="setas" onClick={goToLastPage}>{'>>'}</span>
       </div>
     </div>
   );
